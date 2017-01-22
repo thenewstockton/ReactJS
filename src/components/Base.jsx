@@ -12,5 +12,4 @@ var Base = React.createClass({
     }
 });
 
-
 module.exports = Base;

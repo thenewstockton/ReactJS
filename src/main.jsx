@@ -1,19 +1,19 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
-var Routes = require('./Routes.jsx');
+var EmailField = require('./components/EmailField.jsx');
 
-ReactDOM.render(Routes, document.getElementById('main'));
-
-
+ReactDOM.render(<EmailField />, document.getElementById('main'));
 
 
 
 
+// var React = require('react');
+// var ReactDOM = require('react-dom');
+// var Routes = require('./Routes.jsx');
+// 
+// ReactDOM.render(Routes, document.getElementById('main'));
 
-
-
-
-
+////////////////////////////
 
 // var React = require('react');
 // var ReactDOM = require('react-dom');
