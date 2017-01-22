@@ -29,14 +29,21 @@ var ListManager = React.createClass({
     render: function() {
         var divStyle = {
             marginTop: 10
-        }
+        };
         
+        var headingStyle ={
+            
+        }
+
+        if (this.props.headingColor){
+            headingStyle.background = this.props.headingColor;
+        }
         
         //col-sm-4  supports col-md-4 and col-lg-4
         return (
             <div style={divStyle} className="col-sm-4">
                 <div className="panel panel-primary">
-                    <div className="panel-heading">
+                    <div style={headingStyle} className="panel-heading">
                         <h3>
                             {this.props.title}
                         </h3>
@@ -50,8 +57,8 @@ var ListManager = React.createClass({
                                 <button className="btn btn-primary">Add</button>
                             </div>
                         </form>
-                        <List items={this.state.items} />
                     </div>
+                    <List items={this.state.items} />
                 </div>
             </div>
         );

@@ -7,6 +7,14 @@ ReactDOM.render(
 );
 
 
+ReactDOM.render(
+    <ListManager title="To-Do" />, document.getElementById('todo')
+);
+
+ReactDOM.render(
+    <ListManager title="Christmas" headingColor="#b31217"/>, document.getElementById('xmas')
+);
+
 // var React = require('react');
 // var ReactDOM = require('react-dom');
 // var List = require('./components/List.jsx');
