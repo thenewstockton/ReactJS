@@ -4,7 +4,7 @@ var ListItem = React.createClass({
         return (
             <li>
                 <h4>
-                    {this.props.ingredient}
+                    {this.props.text} 
                 </h4>
             </li>
         );
@@ -12,3 +12,19 @@ var ListItem = React.createClass({
 });
 
 module.exports = ListItem;
+
+
+// var React = require('react');
+// var ListItem = React.createClass({
+//     render: function() {
+//         return (
+//             <li>
+//                 <h4>
+//                     {this.props.ingredient}
+//                 </h4>
+//             </li>
+//         );
+//     }
+// });
+// 
+// module.exports = ListItem;
