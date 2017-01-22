@@ -20553,6 +20553,9 @@ var EmailField = React.createClass({
             this.setState({ valid: true, value: val });
         }
     },
+    clear: function () {
+        this.setState({ valid: true, value: "" });
+    },
     render: function () {
         var formClass = this.state.valid ? "form-group" : "form-group has-error";
         return React.createElement(
@@ -20567,10 +20570,89 @@ module.exports = EmailField;
 
 },{"email-validator":1,"react":178}],180:[function(require,module,exports){
 var React = require('react');
-var ReactDOM = require('react-dom');
-var EmailField = require('./components/EmailField.jsx');
+var EmailField = require('./EmailField.jsx');
+var NameField = require('./NameField.jsx');
 
-ReactDOM.render(React.createElement(EmailField, null), document.getElementById('main'));
+var LeadCapture = React.createClass({
+    displayName: 'LeadCapture',
+
+    onSubmit: function (e) {
+        if (!this.refs.fieldEmail.state.valid) {
+            alert("No Good");
+        } else {
+            //Send request to email host or server!
+            console.log("Good");
+            var httpRequestBody = {
+                email: this.refs.fieldEmail.state.value,
+                firstName: this.refs.fieldName.state.value
+            };
+
+            this.refs.fieldEmail.clear();
+            this.refs.fieldName.clear();
+        }
+    },
+    render: function () {
+        return React.createElement(
+            'div',
+            { className: 'col-sm-3' },
+            React.createElement(
+                'div',
+                { className: 'panel panel-default' },
+                React.createElement(
+                    'div',
+                    { className: 'panel-body' },
+                    React.createElement(NameField, { type: 'First', ref: 'fieldName' }),
+                    React.createElement('br', null),
+                    React.createElement(EmailField, { ref: 'fieldEmail' }),
+                    React.createElement(
+                        'button',
+                        { className: 'btn btn-primary', onClick: this.onSubmit },
+                        'Submit'
+                    )
+                )
+            )
+        );
+    }
+});
+
+module.exports = LeadCapture;
+
+},{"./EmailField.jsx":179,"./NameField.jsx":181,"react":178}],181:[function(require,module,exports){
+var React = require('react');
+
+var NameField = React.createClass({
+    displayName: "NameField",
+
+    getInitialState: function () {
+        return { value: "" };
+    },
+
+    onChange: function (e) {
+        this.setState({ value: e.target.value });
+    },
+    clear: function () {
+        this.setState({ value: "" });
+    },
+    render: function () {
+        return React.createElement("input", {
+            className: "form-control",
+            placeholder: this.props.type + " Name",
+            onChange: this.onChange,
+            value: this.state.value
+        });
+    }
+});
+
+module.exports = NameField;
+
+},{"react":178}],182:[function(require,module,exports){
+var React = require('react');
+var ReactDOM = require('react-dom');
+var LeadCapture = require('./components/LeadCapture.jsx');
+
+ReactDOM.render(React.createElement(LeadCapture, null), document.getElementById('leadCapture'));
+ReactDOM.render(React.createElement(LeadCapture, null), document.getElementById('leadCapture1'));
+ReactDOM.render(React.createElement(LeadCapture, null), document.getElementById('leadCapture2'));
 
 // var React = require('react');
 // var ReactDOM = require('react-dom');
@@ -20604,4 +20686,4 @@ ReactDOM.render(React.createElement(EmailField, null), document.getElementById('
 // 
 // ReactDOM.render(<List />, document.getElementById('ingredients'));
 
-},{"./components/EmailField.jsx":179,"react":178,"react-dom":27}]},{},[180]);
+},{"./components/LeadCapture.jsx":180,"react":178,"react-dom":27}]},{},[182]);
